@@ -35,7 +35,3 @@ function renderLeads(){
 
     ulEl.innerHTML = listItems
 }
-
-function test(){
-    console.log("test")
-}
