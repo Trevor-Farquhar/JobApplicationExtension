@@ -14,12 +14,16 @@ if (leadsFromLocalStorage){
     renderLeads(myLeads)
 }
 
-const tabs = [
-    {url: "https://www.linkedin.com/in/trevor-farquhar-908b42256/"}
-]
 
 tabBtn.addEventListener("click", function(){
-    myLeads.push(tabs[0].url)
+
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+        myLeads.push(tabs[0].url)
+        localStorage.setItem("myLeads", JSON.stringify(myLeads))
+        renderLeads(myLeads)
+    })
+
+
 })
 
 function renderLeads(applicationLinks){
